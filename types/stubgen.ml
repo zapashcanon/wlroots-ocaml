@@ -2,8 +2,7 @@ let prologue = "
 #define _POSIX_C_SOURCE 200809L
 #include <wayland-server.h>
 #include <wlr/backend.h>
-#include <wlr/render.h>
-#include <wlr/render/matrix.h>
+#include <wlr/render/wlr_renderer.h>
 #include <wlr/types/wlr_compositor.h>
 #include <wlr/types/wlr_gamma_control.h>
 #include <wlr/types/wlr_idle.h>

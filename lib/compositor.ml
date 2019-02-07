@@ -50,6 +50,7 @@ let create
   let event_loop = Wl.Display.get_event_loop display in
   let backend = Backend.autocreate display in
   let shm_fd = Wl.Display.init_shm display in
+  (* TODO: fix p *)
   let renderer = Backend.get_renderer backend in (* ? *)
   let socket = Wl.Display.add_socket_auto display in
   let compositor = Bindings.wlr_compositor_create display renderer in
@@ -90,7 +91,7 @@ let display c = c.display
 let event_loop c = c.event_loop
 let renderer c = c.renderer
 
-let surfaces comp =
-  (comp.compositor |-> Types.Compositor.surfaces)
+let surfaces _ = failwith "TODO"
+  (* (comp.compositor |-> Types.Compositor.surfaces)
   |> Bindings.ocaml_of_wl_list
-    (container_of Types.Wl_resource.t Types.Wl_resource.link)
+    (container_of Types.Wl_resource.t Types.Wl_resource.link)*)

@@ -7,8 +7,9 @@ module Types = Wlroots_ffi_f.Ffi.Types
 type t = Types.Backend.t ptr
 include Ptr
 
-let autocreate dpy =
-  let b = Bindings.wlr_backend_autocreate dpy in
+(* TODO: fix i *)
+let autocreate dpy i =
+  let b = Bindings.wlr_backend_autocreate dpy i in
   if is_null b then failwith "Failed to create backend";
   b
 

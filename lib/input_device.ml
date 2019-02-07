@@ -48,7 +48,8 @@ let typ (input: t): typ =
   | Types.Input_device.Type.Touch ->
     Touch (input.raw |->> Types.Input_device.touch)
   | Types.Input_device.Type.Tablet_tool ->
-    Tablet_tool (input.raw |->> Types.Input_device.tablet_tool)
+    failwith "TODO"
+    (* Tablet_tool (input.raw |->> Types.Input_device.tablet_tool) *)
   | Types.Input_device.Type.Tablet_pad ->
     Tablet_pad (input.raw |->> Types.Input_device.tablet_pad)
 

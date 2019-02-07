@@ -26,9 +26,10 @@
         ../config/pixman-1-ccopt
         ../config/pixman-1-cclib)
   (action (bash "\
-${CC} %{types_stubgen} \
+${CC:-gcc} %{types_stubgen} \
   $(< ../config/wlroots-ccopt) $(< ../config/wlroots-cclib) \
   $(< ../config/wayland-server-ccopt) $(< ../config/wayland-server-cclib) \
   $(< ../config/pixman-1-ccopt) $(< ../config/pixman-1-cclib) \
   -I `dirname %{lib:ctypes:ctypes_cstubs_internals.h}` \
-  -I %{ocaml_where} -o %{targets}")))
+  -I %{ocaml_where} -o %{targets} \
+  -DWLR_USE_UNSTABLE")))

@@ -153,7 +153,7 @@ struct
   let wlr_renderer_p = ptr Renderer.t
 
   let wlr_renderer_begin = foreign "wlr_renderer_begin"
-      (wlr_renderer_p @-> wlr_output_p @-> returning void)
+      (wlr_renderer_p @-> int @-> int @-> returning void)
 
   let wlr_renderer_end = foreign "wlr_renderer_end"
       (wlr_renderer_p @-> returning void)
@@ -168,12 +168,14 @@ struct
   (* wlr_backend *)
 
   let wlr_backend_p = ptr Backend.t
+  (* TODO *)
+  let wlr_renderer_create_func_t = ptr int
 
   let wlr_backend_get_renderer = foreign "wlr_backend_get_renderer"
       (wlr_backend_p @-> returning wlr_renderer_p)
 
   let wlr_backend_autocreate = foreign "wlr_backend_autocreate"
-      (wl_display_p @-> returning wlr_backend_p)
+      (wl_display_p @-> wlr_renderer_create_func_t @-> returning wlr_backend_p)
 
   let wlr_backend_start = foreign "wlr_backend_start"
       (wlr_backend_p @-> returning bool)
@@ -251,8 +253,8 @@ struct
 
   (* TODO *)
   let log_callback_t = ptr void
-  let log_importance_t = Log.importance
+  let wlr_log_importance = Log.importance
 
   let wlr_log_init = foreign "wlr_log_init"
-      (log_importance_t @-> log_callback_t @-> returning void)
+      (wlr_log_importance @-> log_callback_t @-> returning void)
 end

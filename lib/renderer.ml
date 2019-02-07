@@ -7,8 +7,8 @@ module Types = Wlroots_ffi_f.Ffi.Types
 type t = Types.Renderer.t ptr
 include Ptr
 
-let begin_ (renderer : t) (output : Output.t) =
-  Bindings.wlr_renderer_begin renderer output.raw
+let begin_ (renderer : t) width height =
+  Bindings.wlr_renderer_begin renderer width height
 
 let end_ (renderer : t) =
   Bindings.wlr_renderer_end renderer
